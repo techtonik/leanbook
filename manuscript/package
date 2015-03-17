@@ -1,0 +1,14 @@
+# What is a package?
+
+In terminology chapter two primary things were described:
+
+  * importable Python package - a directory with __init__.py
+  * archive with Python source or compiled extensions
+
+In Python 2.7.9 docs there is also a distinction between **pure Python package** or **source package** and **binary distribution**. This is clearly inspired by Linux where you have this distinction - software in source form and software in compiled form all need to be packed for distribution.
+
+There is somewhat vague definition of **source package** as archive produced by `setup.py sdist`, which is .tar.gz or .zip file with subdirectory named as package and `setup.py` inside. It is not clear why extra directory is necessary. `pip` is able to install archives without it.
+
+
+
+

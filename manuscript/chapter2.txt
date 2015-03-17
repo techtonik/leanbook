@@ -1,0 +1,32 @@
+# Installing Python module by hand
+
+The procedure is simple:
+
+ 1. Find `site-packages`
+2. Copy your module there
+3. Check that it works
+
+First ensure that your code is not importable. Let's use non-existing module called `tester.py`:
+
+    > python -c "import tester"
+    Traceback (most recent call last):
+      File "<string>", line 1, in <module>
+    ImportError: No module named tester
+
+Now with code stolen from previous chapter, figure out the location of `site-packages` and move `tester.py` there. I'll be using Linux:
+ 
+    $ python -c "import site; print(site.USER_SITE)"
+    /home/techtonik/.local/lib/python2.7/site-packages
+    $ echo "print('imported successfully')" > tester.py
+    $ mv .py /home/techtonik/.local/lib/python2.7/site-packages
+    mv: cannot move ‘tester.py’ to ‘/home/techtonik/.local/lib/python2.7/site-packages’: No such file or directory
+
+Right, Python installation on Linux doesn't create `site-packages` dir on Linux, because Linux people assume that everything should be installed by root to ensure maximum security, but that is inconvenient! So, let's create dir for user installed files:
+
+    $ mkdir -p /home/techtonik/.local/lib/python2.7/site-packages
+    $ mv tester.py /home/techtonik/.local/lib/python2.7/site-packages
+    $ python -c "import tester"
+    imported successfully
+
+Just in case you wonder, `mkdir -p` creates all parent dirs if they are missing. That's it. The only thing that left is to rewrite the code above as a Python script using [site module](https://docs.python.org/2/library/site.html), [shutil](https://docs.python.org/2/library/shutil.html) and [os](https://docs.python.org/2/library/os.html).
+

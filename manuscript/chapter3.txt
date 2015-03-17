@@ -1,0 +1,19 @@
+# Reasons why Python packaging suxx
+
+1. Technical 
+
+That one is obvious. People write more code,  cover more user stories, complexity increases, developers hit Norris' Number. Natural process of evolution.
+
+Complexity of texts describing the system and code can be reduced with diagrams, visualizations and new media material that is more suitable for new generation of people.
+
+2. Social
+
+People  think differently and use computers differently, but not everybody aware of the details. Something that "works for me" for those who have commit rights maybe a major showstopper for other, less experienced people.
+
+So, there is a gap between people who already know how the stuff works, and people who don't know about it. And it is hard to get through the complexity details to fix things, even with a fair amount of work being made to document the stuff (including this book).
+
+3. Economical
+
+New generation of people were raised to consume information in a visual way and the way of engaging experiments rather than taking their time for reading through long texts. Producing this media requires a lot of time that no company will pay for, and a lot of thinking that no company will wait for.
+
+There are a lot of designers, people interested to play with visualization and making Python a better tool, but only few of a thousands are capable of hacking the economy to free themselves for doing this. Why? Because current economy discourages to spend time on stuff that is not profitable. Discourages is not the right word here. Without money you can't survive - you need them to pay bills, loans, to keep a girlfriend and buy out time to spend with her, money for emergencies and for doing good things. Making Python better is a good thing, but economy discourages that, because there is laws to compensate time for people who share what they know for free. There are different ways to support  that, but they all require initial seed of investments for transition.
