@@ -1,6 +1,6 @@
 01intro
 02terminology
-chapter1.txt
+03site-packages
 chapter2.txt
 package
 automating.txt
