@@ -1,7 +1,7 @@
 01intro
 02terminology
 03site-packages
-chapter2.txt
+04installing-manually
 package
 automating.txt
 chapter3.txt
