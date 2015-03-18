@@ -1,12 +1,19 @@
 # Where Python looks for (user) modules?
 
-When you invoke `import something`, Python looks for either `something.py` or `something/__init__.py`, 
+When you invoke `import something`, Python looks for either `something.py`
+or `something/__init__.py`, 
 
-If these files are not from the Python standard library (sometimes called stdlib) that comes shipped with interpreter, then these are *user modules*, and there place where Python expects to find them is called `site-packages`. This location varies for each operating system. For example, on Windows it would be something like:
+If these files are not from the Python standard library (sometimes called
+`stdlib`) that comes shipped with interpreter, then these are
+*user modules*, and a place where Python expects to find them is called
+`site-packages`. This location of site-packages varies for each operating
+system. For example, on Windows it would be something like:
 
     C:\Python34\Lib\site-packages
 
-To get this location programatically, you may use [site module](https://docs.python.org/2/library/site.html) shipped with Python.
+To get this location programatically, you may use
+[site module](https://docs.python.org/2/library/site.html) shipped with
+Python.
 
     python -c "import site; print(site.USER_SITE)"
 
@@ -14,7 +21,13 @@ On Ubuntu it shows:
 
     /home/techtonik/.local/lib/python2.7/site-packages
 
-But that directory doesn't even exist! And `site.USER_SITE` is added in Python 2.6! This is how bad things are in Python packaging. Browsing [site module](https://docs.python.org/2/library/site.html) docs will give you more paths to look for, but `site.USER_SITE` is probably the only one that is writable.
+On my machine that directory doesn't even exist. And `site.USER_SITE` is
+added in Python 2.6. This is because historically Python packaging tools
+prefer to install everything globally, which is not always a good idea.
+Browsing [site module](https://docs.python.org/2/library/site.html) docs
+will give you more paths to look for, but `site.USER_SITE` is probably
+the only one that is writable.
 
-From the other side it is good that this directory is empty. Let's reinvent the packaging from scratch and see where things are different and when they gone wrong.
+Let's see if it will work, try to reinvent the packaging from scratch and
+look where things are different and when they go wrong.
 
