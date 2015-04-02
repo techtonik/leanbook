@@ -1,2 +1,2 @@
-The source code for this book:
+The source of this book:
 https://leanpub.com/reversingpythonpackaging
