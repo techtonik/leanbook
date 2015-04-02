@@ -34,11 +34,10 @@ April 2015. Thing may break in future if PyPA team
 decides to "fix the issue".
 
  * [x] .zip with setup.py at root (hexdump-3.2.zip)
- * [x] archive with setup.py in a directory named after
-   archive
- * [ ] archive with setup.py in arbitrary directory
+ * [x] .zip with setup.py at root (renamed to blabla.zip)
+ * [x] .zip with setup.py in arbitrary directory inside
+       of archive (must contain exactly one directory at
+       root level and nothing else)
 
-
-
-
+These tests were done with pip 1.5.4
 
