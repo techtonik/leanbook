@@ -1,0 +1,44 @@
+What a **Python source package**?
+
+An informal official definition:
+
+  Python source package is an archive in OS system specific
+  archive format (.tar.gz or .zip) produced by
+  **setup.py sdist** command.
+
+That definition is not sufficient to understand what
+exactly the package contains and how it can be used. The
+only thing that is evident is that nothing except `sdist'
+command can produce such package.
+
+A more useful non-official definition could be:
+
+  Packed Python sources that can be installed on target
+  system and/or compiled into binary package format.
+
+Or alternative:
+
+  Archive with packed pure Python code that can be
+  installed by pip from PyPI.
+
+So if the can be installed and contains the full source of
+the Python application/module, that is a **source
+package**.
+
+
+### Reversing the Python source distribution format
+
+But what is in the archive exactly? Well, the following
+can be uploaded to PyPI and installed using pip as of
+April 2015. Thing may break in future if PyPA team
+decides to "fix the issue".
+
+ * [x] .zip with setup.py at root (hexdump-3.2.zip)
+ * [x] archive with setup.py in a directory named after
+   archive
+ * [ ] archive with setup.py in arbitrary directory
+
+
+
+
+

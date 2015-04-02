@@ -1,0 +1,24 @@
+$ pip --version
+pip 1.5.4 from /usr/lib/python2.7/dist-packages (python 2.7)
+$ pip install hexdump-3.2.zip --user
+Unpacking ./hexdump-3.2.zip
+  Running setup.py (path:/tmp/pip-HgUV8l-build/setup.py) egg_info for package from file:///home/techtonik/p/i/leanbook/manuscript/hexdump-3.2.zip
+    
+Installing collected packages: hexdump
+  Running setup.py install for hexdump
+    
+Successfully installed hexdump
+Cleaning up...
+$ python -m hexdump --version
+3.2
+$ pip uninstall hexdump
+Uninstalling hexdump:
+  /home/techtonik/.local/lib/python2.7/site-packages/hexdump-3.2.egg-info
+  /home/techtonik/.local/lib/python2.7/site-packages/hexdump.py
+  /home/techtonik/.local/lib/python2.7/site-packages/hexdump.pyc
+  /home/techtonik/.local/lib/python2.7/site-packages/hexfile.bin
+Proceed (y/n)? y
+  Successfully uninstalled hexdump
+$ python -m hexdump --version
+/usr/bin/python: No module named hexdump
+ 
