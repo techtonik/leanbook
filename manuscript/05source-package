@@ -84,7 +84,40 @@ Let's create an empty *setup.py* to see how it behaves:
 
 This is completely mystic, but gives a hint aboout some
 PKG-INFO. Looking into former hexdump-3.2.zip before
-modification, there is a PKG-INFO file with a lot of
-content.
+modification, there is a PKG-INFO file with a lot of content.
+Placing empty PKG-INFO together with empty setup.py gives
+the same error as above. Actually, the PKG-INFO doesn't
+matter at all - even complete file still gives the
+misleading error.
+
+So, getting back to the setup.py, after some experiments,
+this is the minimal magic incantation to write into setup.py
+to get something installed:
+
+    from distutils.core import setup
+    setup(
+        py_modules=['hexdump'],
+    )
+
+With such file pip will install hexdump as UNKNOWN-0.0.0
+package. The optimal content looks like this:
+
+    from distutils.core import setup
+
+    setup(
+        name='hexdump',
+        version='3.2',
+        author='anatoly techtonik <techtonik@gmail.com>',
+        url='https://bitbucket.org/techtonik/hexdump/',
+
+        description="view/edit your binary with any text editor",
+        license="Public Domain",
+
+        py_modules=['hexdump'],
+    )
 
 
+This is weird. Even after so many years of dealing with that
+file I still look at it as to awkward and non-intuitive way
+to package or build stuff. But there is no alternative to
+setup.py from what I know.
