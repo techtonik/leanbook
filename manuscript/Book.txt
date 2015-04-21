@@ -2,7 +2,7 @@
 02terminology
 03site-packages
 04installing-manually
-05source-package
+05source-package.md
 package
 automating.txt
 chapter3.txt
