@@ -54,19 +54,19 @@ standard ways is fun.
 Removing setup.py from archive and trying to install this
 .zip produces an error.
 
-  $ pip install blabla.zip
-  Processing c:\leanbook\manuscript\blabla.zip
-      Complete output from command python setup.py egg_info:
-      Traceback (most recent call last):
-        File "<string>", line 18, in <module>
-        File "C:\Python34\lib\tokenize.py", line 437, in open
-          buffer = builtins.open(filename, 'rb')
-      FileNotFoundError: [Errno 2] No such file or directory:
- 'C:\\Temp\\pip-7rc60spl-build\\setup.py'
+    $ pip install blabla.zip
+    Processing c:\leanbook\manuscript\blabla.zip
+        Complete output from command python setup.py egg_info:
+        Traceback (most recent call last):
+          File "<string>", line 18, in <module>
+          File "C:\Python34\lib\tokenize.py", line 437, in open
+            buffer = builtins.open(filename, 'rb')
+        FileNotFoundError: [Errno 2] No such file or directory:
+    'C:\\Temp\\pip-7rc60spl-build\\setup.py'
 
-      ----------------------------------------
-      Command "python setup.py egg_info" failed with error code 1
- in C:\Temp\pip-7rc60spl-build
+        ----------------------------------------
+        Command "python setup.py egg_info" failed with error code 1
+    in C:\Temp\pip-7rc60spl-build
 
 This time I upgraded pip to 6.1.1 (latest released
 version as of April 2015).
@@ -78,9 +78,9 @@ some internal `pip` hack.
 
 Let's create an empty *setup.py* to see how it behaves:
 
-  $ pip install blabla.zip
-  No files/directories in C:\Temp\pip-82yc9aep-build\pip-egg-info
- (from PKG-INFO)
+    $ pip install blabla.zip
+    No files/directories in C:\Temp\pip-82yc9aep-build\pip-egg-info
+    (from PKG-INFO)
 
 This is completely mystic, but gives a hint aboout some
 PKG-INFO. Looking into former hexdump-3.2.zip before
@@ -115,7 +115,6 @@ package. The optimal content looks like this:
 
         py_modules=['hexdump'],
     )
-
 
 This is weird. Even after so many years of dealing with that
 file I still look at it as to awkward and non-intuitive way
