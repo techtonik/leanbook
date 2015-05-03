@@ -127,6 +127,7 @@ package, or how to analyse the license field from all
 PyPI packages without running all setup.py (which is
 not secure) on all of them.
 
-This setup.py looks like an awkward and non-intuitive
+This setup.py looks like an awkward and [non-intuitive]
+(https://stackoverflow.com/questions/1471994/what-is-setup-py)
 legacy from the old times, but there is no alternative
 to setup.py from what I know.
