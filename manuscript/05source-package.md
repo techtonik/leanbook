@@ -1,4 +1,4 @@
-What a **Python source package**?
+What is a **Python source package**?
 
 An informal official definition:
 
