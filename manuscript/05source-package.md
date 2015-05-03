@@ -131,3 +131,19 @@ This setup.py looks like an awkward and [non-intuitive]
 (https://stackoverflow.com/questions/1471994/what-is-setup-py)
 legacy from the old times, but there is no alternative
 to setup.py from what I know.
+
+### Uploading to PyPI - required PKG-INFO
+
+The second part of alternative definition from above says
+that archive should be installable from PyPI. The problem
+arised when I tried to upload the .zip without PKG-INFO.
+It failed with `invalid distribution file` error.
+
+The validation made at
+https://bitbucket.org/pypa/pypi/src/8efd5f92/verify_filetype.py?at=default#cl-44
+and requires that PKG-INFO is present in either root of
+archive or in subdirectory (os.path.split returns 2
+element array even for filename without path). Uploading
+.zip file with empty PKG-INFO worked.
+
+
