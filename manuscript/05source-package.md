@@ -2,9 +2,9 @@ What a **Python source package**?
 
 An informal official definition:
 
-  Python source package is an archive in OS system specific
-  archive format (.tar.gz or .zip) produced by
-  **setup.py sdist** command.
+> Python source package is an archive in OS system specific
+> archive format (.tar.gz or .zip) produced by
+> **setup.py sdist** command.
 
 That definition is not sufficient to understand what
 exactly the package contains and how it can be used. The
@@ -13,13 +13,13 @@ command can produce such package.
 
 A more useful non-official definition could be:
 
-  Packed Python sources that can be installed on target
-  system and/or compiled into binary package format.
+> Packed Python sources that can be installed on target
+> system and/or compiled into binary package format.
 
 Or alternative:
 
-  Archive with packed pure Python code that can be
-  installed by pip from PyPI.
+> Archive with packed pure Python code that can be
+> installed by pip from PyPI.
 
 So if the can be installed and contains the full source of
 the Python application/module, that is a **source
@@ -29,13 +29,15 @@ then it is a duck).
 
 ### Reversing the Python source distribution format
 
-But what is in the archive exactly? I took the existing
-package named hexdump-3.2.zip and tried to modify it to
+Using alternative definition from above, it is archive with
+packed pure Python code. What is in the archive exactly?
+
+I took the existing
+package named hexdump-3.2.zip and modified it to
 see what is possible and what is not. It appeared that the
-following could be uploaded to PyPI and installed using
-pip. This test was done with pip 1.5.4 in April 2015. I
-mention this, because thing may break in future if PyPA
-team decides to "fix the issue".
+following could be installed using pip. This test was done
+with pip 1.5.4 in April 2015. Thing may break in future if
+PyPA team decides to "fix the issue".
 
  * [x] .zip with setup.py at root (hexdump-3.2.zip)
  * [x] .zip with setup.py at root (renamed to blabla.zip)
@@ -44,15 +46,19 @@ team decides to "fix the issue".
        root level and nothing else)
 
 So, the setup.py file looks important, let's see how it
-works without learning any Python code at all. That's the
-point of whole point of reversing - learning stuff in non
-standard ways is fun.
+works. Hopefully, this won't require learning any Python
+code at all. That's the point of whole point of reversing
+- enjoy the fun of learning stuff in non-standard way.
 
 
 ### Researching setup.py behaviour
 
+I upgraded pip to 6.1.1 (latest released version as of
+April 2015) to avoid good old bugs (and deal only with new
+bad ones).
+
 Removing setup.py from archive and trying to install this
-.zip produces an error.
+.zip produced this error.
 
     $ pip install blabla.zip
     Processing c:\leanbook\manuscript\blabla.zip
@@ -68,10 +74,8 @@ Removing setup.py from archive and trying to install this
         Command "python setup.py egg_info" failed with error code 1
     in C:\Temp\pip-7rc60spl-build
 
-This time I upgraded pip to 6.1.1 (latest released
-version as of April 2015).
 
-`pip` is trying to execute it with `egg_info` command.
+`pip` tried to execute it with `egg_info` command.
 This is strange, because setup.py is described in official
 Python docs, but there is no `egg_info`, so it must be
 some internal `pip` hack.
@@ -82,7 +86,7 @@ Let's create an empty *setup.py* to see how it behaves:
     No files/directories in C:\Temp\pip-82yc9aep-build\pip-egg-info
     (from PKG-INFO)
 
-This is completely mystic, but gives a hint aboout some
+This is mystic, but gives a hint that some required
 PKG-INFO. Looking into former hexdump-3.2.zip before
 modification, there is a PKG-INFO file with a lot of content.
 Placing empty PKG-INFO together with empty setup.py gives
@@ -91,7 +95,7 @@ matter at all - even complete file still gives the
 misleading error.
 
 So, getting back to the setup.py, after some experiments,
-this is the minimal magic incantation to write into setup.py
+this is the minimal magic incantation that should be present
 to get something installed:
 
     from distutils.core import setup
@@ -116,7 +120,13 @@ package. The optimal content looks like this:
         py_modules=['hexdump'],
     )
 
-This is weird. Even after so many years of dealing with that
-file I still look at it as to awkward and non-intuitive way
-to package or build stuff. But there is no alternative to
-setup.py from what I know.
+This is weird. There is no algorithm to pack a Python
+module into package, but a magic file content. I am not
+even sure how to convert that into Debian or Fedora
+package, or how to analyse the license field from all
+PyPI packages without running all setup.py (which is
+not secure) on all of them.
+
+This setup.py looks like an awkward and non-intuitive
+legacy from the old times, but there is no alternative
+to setup.py from what I know.
