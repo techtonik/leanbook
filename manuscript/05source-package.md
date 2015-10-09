@@ -1,5 +1,6 @@
 # What is a **Python source package**?
 
+Trying to reverse that.
 An informal official definition:
 
 > Python source package is an archive in OS system specific
