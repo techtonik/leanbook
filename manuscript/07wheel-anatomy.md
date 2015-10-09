@@ -66,3 +66,17 @@ So compile your stuff, create yourstuff-version.dist-info/ directory with
 three files, and add stuff to the root of the archive. Name it
 appropriately for your platform / Python version and you're all set. No
 need for complicated `setup.py` dances.
+
+### Bonus
+
+For the test, I added `emptywheel-1.0.1-py2-none-any.whl` to the data/
+directory in the source code of this book. Try to install it and locate
+`find me` in your `site-packages`.
+
+I also include `testdata-wheel-reversing.zip` with the wheels I used to
+test `pip` behaviour. 
+
+And for the last thing, I include `create-record.py` script that can be
+used to create RECORD from an existing directory heirarchy. It is useless
+for the time being, but may become handy in future if `pip` gets more
+strict checks for unpacking the wheels.
