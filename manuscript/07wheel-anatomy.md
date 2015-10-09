@@ -25,3 +25,44 @@ an archive named something-0.5.0-py2-none-any.whl with empty METADATA and
 RECORD and a single line WHEEL file is a valid **wheel** file that can be
 successfully installed and uninstalled with **pip**.
 
+Strange that package requires both METADATA and WHEEL to describe it. One
+of those files should perish, as for me. Looks like METADATA is not
+extensive enough to include extra fields. From the other side all its info
+could be present in a WHEEL file. Anyway.. Let's see if that wheel will be
+accepted by PyPI.
+
+### Uploading wheel to PyPI
+
+First, PyPI can't just take .whl, parse it and merge metadata from there.
+That's a pity. So you will need to create package `something` manually by
+submitting the form with required fields online. After that you can upload
+that crippled wheel without any problem.
+
+### Adding contents
+
+Handling empty wheels is so much fun, but let's make it better. Just add
+some files into .whl and they will get magically unpacked into Python's
+`site-packages`	directory on installing. That's it.
+
+Clearly the best packaging format.
+
+### Platform specific code 
+
+Sometimes you need to ship compiled C extensions. These come as DLLs in
+Windows or SO files in Linux. Both can be 32 or 64 bits. For that, wheels
+require to specify target platform in filename.
+
+    somethings-1.0.1-py2-none-win32.whl
+          ^^^^                          - name
+                ^^^^                    - version
+                     ^^^                - Python version (can be py2.py3)
+                         ^^^^           - mystic ABI
+                               ^^^^     - platform
+
+The ABI is relevant to C extension writers. Platform can be `win32`,
+`linux_i386` and `linux_x86_64`.
+
+So compile your stuff, create yourstuff-version.dist-info/ directory with
+three files, and add stuff to the root of the archive. Name it
+appropriately for your platform / Python version and you're all set. No
+need for complicated `setup.py` dances.
