@@ -3,6 +3,6 @@
 03site-packages
 04installing-manually
 05source-package.md
-package
+06so-what.md
 automating.txt
 chapter3.txt
